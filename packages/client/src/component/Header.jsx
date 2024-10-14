@@ -5,25 +5,25 @@ import { toast } from "react-toastify";
 import { Web3Context } from "../context/Web3Context";
 
 const Header = () => {
-  const { account, contract, provider, signer, error } = useContext(Web3Context);
+  const { account, contract, provider, signer, error } =
+    useContext(Web3Context);
 
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
         console.log("Requesting accounts...");
-  
+
         // Create a new Web3 provider using ethers.js
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        
+
         // Request access to the user's MetaMask account
         const accounts = await provider.send("eth_requestAccounts", []);
         console.log("Accounts received:", accounts);
-        
+
         toast.success("Wallet connected");
-  
+
         // You can use the provider and accounts further in your application logic
         // Example: const signer = provider.getSigner();
-  
       } catch (error) {
         console.error("Error connecting to wallet:", error);
         toast.error("Failed to connect wallet");
@@ -32,12 +32,11 @@ const Header = () => {
       toast.warn("Ethereum provider not found. Install MetaMask.");
     }
   };
-  
 
   return (
     <header className="bg-blue-600 p-4 flex justify-between items-center text-white">
       <Link to="/" className="text-xl font-bold">
-        Net Base
+        Net Celo
       </Link>
       <nav>
         {account && (
