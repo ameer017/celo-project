@@ -1,4 +1,4 @@
-# Scroll and Chill
+# Net Celo
 
 ## Description
 
